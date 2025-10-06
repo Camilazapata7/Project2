@@ -37,7 +37,7 @@ namespace Project2.Shared
         [RegularExpression(@"^[a-zA-Z0-9\s.,]+$", ErrorMessage = "El campo {0} contiene caracteres no válidos.")]
         public string ActividadesRealizadas { get; set; } = string.Empty;
 
-        // Propiedades de Navegación
+       
         public virtual Voluntario Voluntario { get; set; } = null!;
         public virtual Proyecto Proyecto { get; set; } = null!;
     }

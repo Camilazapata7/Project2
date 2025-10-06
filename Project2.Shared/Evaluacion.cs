@@ -24,12 +24,12 @@ namespace Project2.Shared
         public string Comentario { get; set; } = string.Empty;
 
         [Display(Name = "Fecha de Evaluación")]
-        [MaxLength(10, ErrorMessage = "Este campo solo permite 10 caracteres")] // Placeholder para la longitud de la fecha
+        [MaxLength(10, ErrorMessage = "Este campo solo permite 10 caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [RegularExpression(@"^[0-9\-/\s\:]+$", ErrorMessage = "El campo {0} contiene un formato de fecha no válido.")]
         public DateTime FechaEvaluacion { get; set; } = DateTime.UtcNow;
 
-        // Foreign Key (FK) a Proyecto
+        // Fkoreign Key (FK) a Proyecto
         [Display(Name = "ID Proyecto")]
         [MaxLength(10, ErrorMessage = "Este campo solo permite 10 caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]

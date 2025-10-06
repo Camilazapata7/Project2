@@ -9,7 +9,7 @@ namespace Project2.Shared
 {
     public class Organizador
     {
-        // El ID principal no requiere validación explícita más allá de [Key]
+
         public int Id { get; set; }
 
         [Display(Name = "Nombre de Contacto")]
@@ -36,7 +36,7 @@ namespace Project2.Shared
         [RegularExpression(@"^[a-zA-Z0-9\s.,]+$", ErrorMessage = "El campo {0} contiene caracteres no válidos.")]
         public string HistorialImpactoSocial { get; set; } = string.Empty;
 
-        // Propiedad de Navegación
+        
         public virtual ICollection<Proyecto> ProyectosLiderados { get; set; } = new List<Proyecto>();
     }
 }

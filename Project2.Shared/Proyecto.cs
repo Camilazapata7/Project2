@@ -43,13 +43,13 @@ namespace Project2.Shared
 
         // Foreign Key (FK) para Organizador
         [Display(Name = "ID Organizador")]
-        [MaxLength(10, ErrorMessage = "Este campo solo permite 10 caracteres")] // Usamos MaxLength para cumplir con el requisito de 4 anotaciones
+        [MaxLength(10, ErrorMessage = "Este campo solo permite 10 caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "El campo {0} solo permite números.")]
         public int OrganizadorId { get; set; }
         public virtual Organizador Organizador { get; set; } = null!;
 
-        // Propiedades de Navegación
+        
         public virtual ICollection<Tarea> Tareas { get; set; } = new List<Tarea>();
         public virtual ICollection<Participacion> Participaciones { get; set; } = new List<Participacion>();
         public virtual ICollection<Evaluacion> Evaluaciones { get; set; } = new List<Evaluacion>();

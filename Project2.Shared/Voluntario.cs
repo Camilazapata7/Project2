@@ -17,7 +17,7 @@ namespace Project2.Shared
         [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "El campo {0} solo permite letras y espacios.")]
         public string Nombre { get; set; } = string.Empty;
 
-        // Validaciones idénticas a tu ejemplo (Documento)
+        // Validaciones
         [Display(Name = "Documento de Identidad")]
         [MaxLength(10, ErrorMessage = "Este campo solo permite 10 caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
@@ -54,7 +54,7 @@ namespace Project2.Shared
         [RegularExpression(@"^[a-zA-Z0-9\s]+$", ErrorMessage = "El campo {0} contiene caracteres no válidos.")]
         public string DisponibilidadTiempo { get; set; } = string.Empty;
 
-        // Propiedad de Navegación
+       
         public virtual ICollection<Participacion> Participaciones { get; set; } = new List<Participacion>();
     }
 }

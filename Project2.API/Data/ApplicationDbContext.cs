@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Project2.Shared; // Importante para usar las clases de tu proyecto Shared
+using Project2.Shared; 
 
 namespace Project2.API.Data
 {
@@ -10,7 +10,7 @@ namespace Project2.API.Data
         {
         }
 
-        // DbSets: Aquí defines las tablas de tu base de datos
+        // DbSets
         public DbSet<Organizador> Organizadores { get; set; } = null!;
         public DbSet<Proyecto> Proyectos { get; set; } = null!;
         public DbSet<Voluntario> Voluntarios { get; set; } = null!;
@@ -18,18 +18,16 @@ namespace Project2.API.Data
         public DbSet<Tarea> Tareas { get; set; } = null!;
         public DbSet<Evaluacion> Evaluaciones { get; set; } = null!;
 
-        // Configuración de Modelado y Seeding
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // 🚨 1. CORRECCIÓN PARA ADVERTENCIA DECIMAL (HistorialHoras) 
-            // Esto le dice a SQL Server que use un formato DECIMAL(18, 2)
+            // 1. Configuraciones adicionales
             modelBuilder.Entity<Participacion>()
                 .Property(p => p.HistorialHoras)
                 .HasColumnType("decimal(18, 2)");
 
 
-            // 2. SeedDb (Datos iniciales) - Ejemplo de Organizador
-            // Estos datos se insertarán cuando ejecutes Update-Database.
+            // 2. SeedDb (Datos iniciales)
             modelBuilder.Entity<Organizador>().HasData(
                 new Organizador
                 {
@@ -49,8 +47,7 @@ namespace Project2.API.Data
                 }
             );
 
-            // 🚨 IMPORTANTE: Si deseas añadir datos de prueba (Seed Data) para tus otras 5 entidades, 
-            // debes hacerlo aquí, siguiendo el mismo formato de modelBuilder.Entity<...>().HasData(...).
+
 
             base.OnModelCreating(modelBuilder);
         }
