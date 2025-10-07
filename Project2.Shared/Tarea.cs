@@ -4,43 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Project2.Shared
+namespace Project2.Shared.Models
 {
+    /// <summary>
+    /// Representa una tarea asignada dentro de un proyecto.
+    /// </summary>
     public class Tarea
     {
+        [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Descripción de la Tarea")]
-        [MaxLength(255, ErrorMessage = "Este campo solo permite 255 caracteres")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [RegularExpression(@"^[a-zA-Z0-9\s.,]+$", ErrorMessage = "El campo {0} contiene caracteres no válidos.")]
+        [Required, StringLength(100)]
+        [Display(Name = "Nombre de la Tarea")]
+        public string Nombre { get; set; } = string.Empty;
+
+        [Required, StringLength(300)]
+        [Display(Name = "Descripción Detallada")]
         public string Descripcion { get; set; } = string.Empty;
 
-        [Display(Name = "Tiempo Estimado")]
-        [MaxLength(50, ErrorMessage = "Este campo solo permite 50 caracteres")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [RegularExpression(@"^[a-zA-Z0-9\s]+$", ErrorMessage = "El campo {0} solo permite letras, números y espacios.")]
-        public string TiempoEstimado { get; set; } = string.Empty;
+        [Range(1, 1000)]
+        [Display(Name = "Horas Estimadas")]
+        public int HorasEstimadas { get; set; }
 
-        [Display(Name = "Lugar")]
-        [MaxLength(100, ErrorMessage = "Este campo solo permite 100 caracteres")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [RegularExpression(@"^[a-zA-Z0-9\s]+$", ErrorMessage = "El campo {0} solo permite letras, números y espacios.")]
-        public string Lugar { get; set; } = string.Empty;
-
-        [Display(Name = "Responsable Asignado")]
-        [MaxLength(100, ErrorMessage = "Este campo solo permite 100 caracteres")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "El campo {0} solo permite letras y espacios.")]
-        public string ResponsableAsignado { get; set; } = string.Empty;
-
-        // Foreign Key (FK)
-        [Display(Name = "ID Proyecto")]
-        [MaxLength(10, ErrorMessage = "Este campo solo permite 10 caracteres")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [RegularExpression(@"^[0-9]+$", ErrorMessage = "El campo {0} solo permite números.")]
+        [ForeignKey("Proyecto")]
+        [Display(Name = "Proyecto Asociado")]
         public int ProyectoId { get; set; }
+
         public virtual Proyecto Proyecto { get; set; } = null!;
     }
 }
