@@ -1,4 +1,4 @@
 # Project2
-inctegrantes 
+integrantes 
 camila zapata
 stiven builes
